@@ -1,1 +1,29 @@
+<div class=play>
+
 <h1>Lets play Tic Tac Toe</h1>
+
+<div class="board">
+___________</br>
+|_1_|_2_|_3_|</br>
+|_4_|_5_|_6_|</br>
+|_7_|_8_|_9_|</br>
+</div>
+</br>
+
+<div class="players">
+Player 1 = <%= @player1 %></br>
+Player 2 = <%= @player2 %>
+</div>
+
+List of moves: </br>
+<%= @spaces %>
+</div>
+
+
+
+<form action="/success" method="post" class="form">
+  <label for="move1">Player 1, enter the square you'd like to play:</label>
+  <input id="move1" name="move1" type="text">
+
+  <button type="submit">"Make your move"</button>
+</form>

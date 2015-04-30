@@ -8,6 +8,6 @@ describe('add players path', {:type=> :feature}) do
   it('processes input and adds player to new game') do
     visit('/')
     click_button('Play!')
-    expect(page).to have_content("Lets play Tic Tac Toe")
+    expect(page).to have_content("Player")
   end
 end

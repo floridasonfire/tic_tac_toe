@@ -4,11 +4,22 @@ require('game')
 require('board')
 require('pry')
 
+
 describe(Player) do
+before() do
+  Player.clear()
+end  
+
   describe("#save") do
     it("returns the player's mark") do
       test_players = Player.new({:player1=> "X" , :player2=> "O"})
       expect(test_players.save()).to(eq([test_players]))
+    end
+  end
+
+  describe(".all") do
+    it("returns all") do
+      expect(Player.all()).to(eq([]))
     end
   end
 

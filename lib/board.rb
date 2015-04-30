@@ -1,6 +1,6 @@
 class Board
   attr_reader(:one, :two, :three, :four, :five, :six, :seven, :eight, :nine)
-
+ @@boards = []
   define_method(:initialize) do |attributes|
     @one = attributes.fetch(:one)
     @two = attributes.fetch(:two)
@@ -13,6 +13,9 @@ class Board
     @nine = attributes.fetch(:nine)
     @total_player1 = 0
     @total_player2 = 0
+  end
+  define_method(:save) do
+    @@boards.store(self)
   end
 
 

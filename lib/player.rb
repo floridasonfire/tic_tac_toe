@@ -1,6 +1,6 @@
 class Player
-  @@players = []
   attr_reader(:player1, :player2)
+  @@players = []
 
   define_method(:initialize) do |attributes|
     @player1 = attributes.fetch(:player1)
@@ -12,6 +12,15 @@ class Player
   define_method(:save) do
     @@players.push(self)
   end
+
+  define_singleton_method(:all) do
+    @@players
+  end
+
+  define_singleton_method(:clear) do
+    @@players = []
+  end
+  
 
   define_method(:next_turn) do
     # if turn.odd?
@@ -25,6 +34,8 @@ class Player
   end
 
 
+
+
   define_method(:which_turn) do
     players = :players
 
@@ -34,5 +45,7 @@ class Player
       @player2
     end
   end
+
+
 
 end
