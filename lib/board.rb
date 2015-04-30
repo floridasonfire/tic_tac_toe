@@ -11,6 +11,9 @@ class Board
     @seven = attributes.fetch(:seven)
     @eight = attributes.fetch(:eight)
     @nine = attributes.fetch(:nine)
+    @total_player1 = 0
+    @total_player2 = 0
   end
+
 
 end

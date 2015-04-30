@@ -1,13 +1,16 @@
 class Game
 
- attr_reader(:players, :board)
+ attr_reader(:player1, :player2, :board)
 @@game = {}
 @@players = {}
 
 
   define_method(:initialize) do |attributes|
     @board = attributes.fetch(:board)
-    @players = attributes.fetch(:players)
+    @player1 = attributes.fetch(:player1)
+    @player2 = attributes.fetch(:player2)
+    @@players.store(:player1, @player1)
+    @@players.store(:player2, @player2)
     @spaces = {}
     @turn = 0
   end
@@ -22,8 +25,12 @@ class Game
   # end
 
   define_method(:get_player) do |player|
-    player = @players.fetch(player)
+    player = @@players.fetch(player)
     player
+  end
+
+  define_method(:players) do
+    @@players
   end
 
   # define_method(:mark_player1) do |player1|
@@ -50,15 +57,18 @@ class Game
     @turn += 1
     # end
   end
+  #
+  # define_method(:win) do
+  #   if board.fetch(:one) == "O"
 
 
   define_method(:which_turn) do
-    players = :players
+    players = @@players
 
     if @turn.odd?
       players.fetch(:player1)
     else
-      :player2
+      players.fetch(:player2)
     end
   end
 
