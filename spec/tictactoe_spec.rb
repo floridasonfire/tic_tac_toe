@@ -4,10 +4,21 @@ require('game')
 require('board')
 
 describe(Player) do
-  describe("#mark") do
+  describe("#save") do
     it("returns the player's mark") do
       test_players = Player.new({:player1=> "X" , :player2=> "O"})
       expect(test_players.save()).to(eq([test_players]))
+    end
+  end
+
+  describe('#which_turn') do
+    it("will return the player") do
+      new_players = Player.new({:player1=> "X", :player2=> "O"})
+      board = {}
+      game_hash = {:players=> new_players, :board=>board}
+      game = Game.new(game_hash)
+      new_players.next_turn()
+      expect(new_players.which_turn()).to(eq("X"))
     end
   end
 end
@@ -18,10 +29,21 @@ describe(Space) do
     new_space = Space.new("one")
     new_space.mark("X")
     expect(new_space.check_mark()).to(eq("X"))
+    end
   end
 end
 
-
+describe(Game) do
+  describe('#players') do
+    it('adds new players to the game') do
+      new_players = Player.new({:player1=> "X", :player2=> "O"})
+      board = {}
+      game_hash = {:players=> new_players, :board=>board}
+      game = Game.new(game_hash)
+      # game.add_players(new_players)
+      expect(game.players).to(eq(new_players))
+    end
+  end
 
 end
 
