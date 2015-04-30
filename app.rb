@@ -19,11 +19,9 @@ post('/play') do
 @players.save()
 @player1=@players.player1
 @player2=@players.player2
-# @@players.push(@player1)
-# @@players.push(@player2)
-# @board = Board.new({:one=> "one", :two => "two", :three=> "three", :four=> "four", :five => "five", :six => "six", :seven => "seven", :eight=> "eight", :nine=> "nine"})
-# @board.save
-# @spaces = {}
+@board = Board.new({:one=> "one", :two => "two", :three=> "three", :four=> "four", :five => "five", :six => "six", :seven => "seven", :eight=> "eight", :nine=> "nine"})
+@board.save
+@spaces = {}
 # @move ={@spaces.fetch(params.fetch('move1'))=> @player1}
 # @board.each_value {|value| @spaces.store(value, "")}
 # @spaces.merge!(@move)
@@ -31,10 +29,6 @@ erb(:play)
 end
 
 get('/play') do
-# @players=Player.new({:player1 => params.fetch('player1'), :player2 => params.fetch('player2')})
-# @players.save()
-# @player1=@players.player1
-# @player2=@players.player2
 @players=Player.new({:player1 => params.fetch('player1'), :player2 => params.fetch('player2')})
 @players.save()
 @player1=@players.player1
@@ -53,5 +47,9 @@ end
 
 post('/success') do
   @all_players = Player.all()
+  @more_players = []
+  @all_players.each() do |player|
+    @more_players.push(player.player1)
+  end
   erb(:success)
 end

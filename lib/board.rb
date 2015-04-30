@@ -15,7 +15,7 @@ class Board
     @total_player2 = 0
   end
   define_method(:save) do
-    @@boards.store(self)
+    @@boards.push(self)
   end
 
 
